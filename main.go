@@ -1,22 +1,34 @@
 package main
 
 import (
-	_ "PDFiber/docs"
+	"PDFiber/config"
+	"PDFiber/router"
+	"fmt"
+	"log"
+	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/swagger"
 )
 
-// @title PDFiber
-// @BasePath /api
 func main() {
 	app := fiber.New()
 
-	app.Get("/swagger/*", swagger.HandlerDefault)
-	app.Get("/api", func(c *fiber.Ctx) error {
-		err := c.SendString("Hello, World!")
-		return err
-	})
+	router.Setup(app)
 
-	app.Listen(":3000")
+	os.MkdirAll(config.GlobalConfig.TempDir, os.ModePerm)
+	go func() {
+		c := make(chan os.Signal, 1)
+		signal.Notify(c, os.Interrupt, syscall.SIGTERM)
+
+		sig := <-c
+		log.Printf("Sinal recebido: %v\n", sig)
+
+		os.RemoveAll(config.GlobalConfig.TempDir)
+		os.Exit(0)
+	}()
+
+	addr := fmt.Sprintf(":%s", config.GlobalConfig.Port)
+	log.Fatal(app.Listen(addr))
 }
