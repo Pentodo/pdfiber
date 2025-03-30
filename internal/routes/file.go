@@ -11,5 +11,4 @@ func Setup(api fiber.Router) {
 
 	file.Post("/merge", fileHandlers.Merge)
 	file.Post("/split", fileHandlers.Split)
-
 }
