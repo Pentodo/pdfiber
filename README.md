@@ -55,4 +55,19 @@ The API will be available at `http://localhost:3000`. Check the documentation fo
 
 ## Contributing
 
-Pull requests are welcome! For major changes, open an **issue** first to discuss what you would like to change.
+Pull requests are welcome! For major changes, open an **issue** first to discuss what you would like to change. Here are some impactful areas where you can make a difference:
+
+- **Documentation:**  
+  Build robust API documentation using tools like **Swagger** or **Redoc** to provide a clear understanding of endpoints, parameters, and responses.
+
+- **Request Validation:**  
+  Strengthen server-side validation to ensure data inputs are secure and reliable. Libraries like **validator/v10** or custom validation logic can be implemented.
+
+- **User Authentication:**  
+  Add an authentication system to restrict access to premium features, utilizing technologies such as **JWT (JSON Web Token)** or **OAuth**.
+
+- **New Functionalities:**  
+  Develop additional features, like PDF compression or file upload support directly from the browser.
+
+- **Optimizations:**  
+  Enhance the handling of large PDF files and explore memory optimization techniques during complex operations.
