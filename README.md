@@ -51,7 +51,7 @@ Start the server:
 go run main.go
 ```
 
-The API will be available at `http://localhost:3000`. Check the documentation for details on the available endpoints.
+The API will be available at `http://localhost:3000`.
 
 ## Contributing
 
